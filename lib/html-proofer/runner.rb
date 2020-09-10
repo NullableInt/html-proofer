@@ -75,12 +75,8 @@ module HTMLProofer
       # TODO: lazy. if we're checking only external links,
       # we'll just trash all the failed tests. really, we should
       # just not run those other checks at all.
-      if @options[:external_only]
-        @failures = []
-        validate_urls
-      elsif !@options[:disable_external]
-        validate_urls
-      end
+      @failures = [] if @options[:external_only]
+      validate_urls
     end
 
     # Walks over each implemented check and runs them on the files, in parallel.
