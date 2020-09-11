@@ -644,4 +644,10 @@ describe 'Links test' do
     proofer = run_proofer(file, :file, check_external_hash: true)
     expect(proofer.failed_tests).to eq []
   end
+
+  it 'can parse a large list of links' do
+    file = "#{FIXTURES_DIR}/links/large_list_of_links.html"
+    proofer = run_proofer(file, :file, :links)
+    expect(proofer.failed_tests).to eq []
+  end
 end
