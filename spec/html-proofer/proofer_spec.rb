@@ -175,7 +175,7 @@ describe HTMLProofer do
           check_opengraph: true,
           verbose: true
       }
-      proofer = run_proofer([file], opts)
+      proofer = HTMLProofer.check_file(file)
       expect(proofer.failed_tests.length).to eq(0)
     end
   end
