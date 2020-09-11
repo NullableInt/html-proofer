@@ -163,9 +163,9 @@ describe HTMLProofer do
     end
   end
 
-  describe 'single large file with many links' do
-    it 'works' do
-      file = "#{FIXTURES_DIR}/links/large_list_of_links.html"
+  describe 'full site' do
+    it 'finishes in a reasonable time' do
+      directory = "#{FIXTURES_DIR}/html/full_site"
       opts = {
           assume_extension: true,
           check_html: true,
@@ -175,7 +175,7 @@ describe HTMLProofer do
           check_opengraph: true,
           verbose: true
       }
-      proofer = HTMLProofer.check_file(file)
+      proofer = HTMLProofer.check_directory(directory, opts)
       expect(proofer.failed_tests.length).to eq(0)
     end
   end
