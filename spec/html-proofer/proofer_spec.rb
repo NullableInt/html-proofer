@@ -166,7 +166,16 @@ describe HTMLProofer do
   describe 'single large file with many links' do
     it 'works' do
       file = "#{FIXTURES_DIR}/links/large_list_of_links.html"
-      proofer = run_proofer([file])
+      opts = {
+          assume_extension: true,
+          check_html: true,
+          enforce_https: true,
+          only_4xx: true,
+          check_unrendered_link: true,
+          check_opengraph: true,
+          verbose: true
+      }
+      proofer = run_proofer([file], opts)
       expect(proofer.failed_tests.length).to eq(0)
     end
   end
