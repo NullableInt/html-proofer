@@ -162,4 +162,12 @@ describe HTMLProofer do
       expect(output).to_not match('sorting/status')
     end
   end
+
+  describe 'single large file with many links' do
+    it 'works' do
+      file = "#{FIXTURES_DIR}/links/large_list_of_links.html"
+      proofer = run_proofer([file])
+      expect(proofer.failed_tests.length).to eq(0)
+    end
+  end
 end
